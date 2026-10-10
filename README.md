@@ -73,21 +73,7 @@ A featured profile of **DN Mahnoor**, Dietitian & Nutritionist, gives visitors a
 
 ---
 
-## 🖼️ Screenshots
 
-> Add your images to `docs/screenshots/` and they will appear here automatically.
-
-| Home | Nutrition |
-|:---:|:---:|
-| ![Home](docs/screenshots/home.png) | ![Nutrition](docs/screenshots/nutrition.png) |
-
-| Recipes | Dark Mode |
-|:---:|:---:|
-| ![Recipes](docs/screenshots/recipes.png) | ![Dark mode](docs/screenshots/dark-mode.png) |
-
-| Login | Mobile |
-|:---:|:---:|
-| ![Login](docs/screenshots/login.png) | ![Mobile](docs/screenshots/mobile.png) |
 
 ---
 
