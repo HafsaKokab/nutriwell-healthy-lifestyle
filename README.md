@@ -1,19 +1,17 @@
-<div align="center">
+# 🌿 NutriWell
 
-<img src="https://img.shields.io/badge/🌿-NutriWell-2f3d25?style=for-the-badge&labelColor=2f3d25&color=c8653a" height="48" alt="NutriWell"/>
+### *Eat Better. Live Better.*
 
-# NutriWell
+> Nutrition science made plain, practical and trustworthy — learn the basics, cook with confidence, and build habits that last.
 
-**Eat Better. Live Better.**
-<br>
+**[Overview](#-overview)** · **[Features](#-features)** · **[Quick Start](#-quick-start)** · **[Security](#-security)** · **[Contact](#-contact)**
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![PHP](https://img.shields.io/badge/PHP-8+-777BB4?style=flat-square&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-
-</div>
+| Layer | Technology |
+|---|---|
+| **Front end** | `HTML5` · `CSS3` · `Vanilla JavaScript` |
+| **Back end** | `PHP 8` · `MySQL / MariaDB` |
+| **Auth** | `password_hash()` · Prepared statements · Secure sessions |
+| **Dependencies** | None on the front end — no frameworks, no build step |
 
 ---
 
@@ -123,6 +121,8 @@ sequenceDiagram
 
 ```
 project-root/
+├── database/
+│   └── schema.sql            # Database & table definitions
 ├── config/
 │   └── database.php          # mysqli connection ($conn)
 ├── includes/
@@ -186,18 +186,13 @@ Copy the project into your server directory (for XAMPP: `C:/xampp/htdocs/`) and 
 
 ### 3 · Create the database
 
-```sql
-CREATE DATABASE nutriwell CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE nutriwell;
+Import the included schema from the project root:
 
-CREATE TABLE users (
-    id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    full_name     VARCHAR(100) NOT NULL,
-    email         VARCHAR(255) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
-    created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+```bash
+mysql -u root -p < database/schema.sql
 ```
+
+This creates the `nutriwell` database and the `users` table. Alternatively, import `database/schema.sql` through **phpMyAdmin → Import**.
 
 ### 4 · Configure the connection
 
@@ -234,6 +229,63 @@ Open **http://localhost/NutriWell/index.html** in your browser.
 > 💡 The static pages (About, Nutrition, Recipes, Contact) also work by opening the `.html` files directly. Only Sign Up, Login and Logout need PHP and MySQL.
 
 > ⚠️ Never commit real credentials. Add `config/database.php` to `.gitignore`.
+
+---
+
+## 🗄️ Database Schema
+
+The schema lives in [`database/schema.sql`](database/schema.sql) and targets **MySQL 5.7+ / MariaDB 10.3+**.
+
+### `users`
+
+Stores registered members. Passwords are never stored in plain text, only as hashes produced by PHP's `password_hash()`.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | `INT UNSIGNED` | PK, AUTO_INCREMENT | Unique user ID |
+| `full_name` | `VARCHAR(100)` | NOT NULL | Member's full name |
+| `email` | `VARCHAR(255)` | NOT NULL, UNIQUE (`uq_users_email`) | Login identifier, duplicates rejected |
+| `password_hash` | `VARCHAR(255)` | NOT NULL | bcrypt/argon2 hash |
+| `created_at` | `TIMESTAMP` | NOT NULL, DEFAULT `CURRENT_TIMESTAMP` | Registration time |
+
+**Engine:** InnoDB · **Charset:** `utf8mb4` · **Collation:** `utf8mb4_unicode_ci`
+
+<details>
+<summary><b>View full schema.sql</b></summary>
+
+```sql
+-- ============================================================
+-- NutriWell - Database Schema
+-- Engine : MySQL 5.7+ / MariaDB 10.3+
+-- Usage  : mysql -u root -p < database/schema.sql
+-- ============================================================
+
+CREATE DATABASE IF NOT EXISTS nutriwell
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE nutriwell;
+
+-- ------------------------------------------------------------
+-- Table: users
+-- Stores registered members. Passwords are stored only as
+-- bcrypt/argon2 hashes produced by PHP's password_hash().
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS users (
+    id            INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+    full_name     VARCHAR(100)  NOT NULL,
+    email         VARCHAR(255)  NOT NULL,
+    password_hash VARCHAR(255)  NOT NULL,
+    created_at    TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_users_email (email)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+```
+
+</details>
 
 ---
 
@@ -334,13 +386,9 @@ NutriWell provides general educational information and is **not a substitute for
 
 ---
 
-<div align="center">
-
 ### 🌿 NutriWell
 *Eat Better. Live Better.*
 
 Built with ❤️ using HTML, CSS, JavaScript, PHP & MySQL
 
 © 2026 NutriWell. All rights reserved.
-
-</div>
