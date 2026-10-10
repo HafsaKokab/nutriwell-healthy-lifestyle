@@ -13,9 +13,6 @@
 ![PHP](https://img.shields.io/badge/PHP-8+-777BB4?style=flat-square&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 
-
-[Features](#-features) · [Screenshots](#-screenshots) · [Quick Start](#-quick-start) · [Architecture](#-architecture) · [Security](#-security) · [Roadmap](#-roadmap)
-
 </div>
 
 ---
