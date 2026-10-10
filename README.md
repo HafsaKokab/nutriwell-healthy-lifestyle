@@ -5,9 +5,6 @@
 # NutriWell
 
 **Eat Better. Live Better.**
-
-A modern, responsive nutrition and healthy-lifestyle platform — interactive food explorer, recipe library, BMI calculator and a secure PHP/MySQL member system.
-
 <br>
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
@@ -15,9 +12,7 @@ A modern, responsive nutrition and healthy-lifestyle platform — interactive fo
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![PHP](https://img.shields.io/badge/PHP-8+-777BB4?style=flat-square&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![Responsive](https://img.shields.io/badge/Responsive-Mobile%20%7C%20Tablet%20%7C%20Desktop-3a4a2e?style=flat-square)
-![Dark Mode](https://img.shields.io/badge/Dark%20Mode-Supported-1c211a?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Completed-2ea44f?style=flat-square)
+
 
 [Features](#-features) · [Screenshots](#-screenshots) · [Quick Start](#-quick-start) · [Architecture](#-architecture) · [Security](#-security) · [Roadmap](#-roadmap)
 
