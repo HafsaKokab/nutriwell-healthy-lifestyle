@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes — NutriWell</title>
+  <meta name="description" content="Discover healthy recipes for breakfast, lunch, dinner and drinks — with full ingredients and step-by-step instructions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== Recipes page only (prefixed rc-) ===== */
+    .rc-hero{padding:72px 0;background:#f5f1e6;border-bottom:1px solid rgba(0,0,0,.08)}
+    .rc-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .rc-hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.4rem,5vw,4rem);line-height:1.08;margin:0 0 20px;color:#252b1f}
+    .rc-hero-text{font-size:1.15rem;line-height:1.7;max-width:48ch;color:#4d5244;margin:0 0 28px}
+    .rc-hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+    .rc-facts{display:flex;gap:40px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(0,0,0,.14)}
+    .rc-fact strong{display:block;font-family:'Fraunces',serif;font-size:1.9rem;line-height:1.1;color:#3a4a2e}
+    .rc-fact span{font-size:.92rem;color:#4d5244}
+
+    .rc-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:440px}
+    .rc-mosaic img{width:100%;height:100%;object-fit:cover;border-radius:18px;display:block}
+    .rc-mosaic img:first-child{grid-row:1 / 3;border-radius:200px 18px 18px 18px}
+
+    .rc-section{padding:72px 0 88px;scroll-margin-top:90px}
+    .rc-toolbar{margin-bottom:36px}
+    .rc-toolbar h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 6px}
+    .rc-toolbar p{margin:0 0 22px;opacity:.8;line-height:1.7}
+
+    /* CTA banner — colours forced so it reads well in light AND dark mode */
+    .rc-cta-wrap{padding:88px 0}
+    .rc-cta{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;background:#2f3d25;border-radius:24px;padding:48px}
+    .rc-cta h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.3rem);margin:0 0 10px;color:#f5f1e6 !important}
+    .rc-cta p{margin:0;max-width:52ch;line-height:1.7;color:#e4dfcf !important;opacity:1 !important}
+    .rc-cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .rc-cta .btn-primary{background:#f5f1e6 !important;color:#2f3d25 !important;border:2px solid #f5f1e6 !important}
+    .rc-cta .btn-primary:hover{background:#fff !important}
+    .rc-cta .btn-clay{background:#c8653a !important;color:#fff !important;border:2px solid #c8653a !important}
+    .rc-cta .btn-clay:hover{background:#b3562e !important;border-color:#b3562e !important}
+
+    /* dark mode */
+    [data-theme="dark"] .rc-hero,body.dark .rc-hero,body.dark-mode .rc-hero,.dark .rc-hero{background:#1c211a;border-color:rgba(255,255,255,.1)}
+    [data-theme="dark"] .rc-hero h1,body.dark .rc-hero h1,body.dark-mode .rc-hero h1,.dark .rc-hero h1{color:#f1ede1}
+    [data-theme="dark"] .rc-hero-text,[data-theme="dark"] .rc-fact span,body.dark .rc-hero-text,body.dark .rc-fact span,body.dark-mode .rc-hero-text,body.dark-mode .rc-fact span,.dark .rc-hero-text,.dark .rc-fact span{color:#c9c6b8}
+    [data-theme="dark"] .rc-fact strong,body.dark .rc-fact strong,body.dark-mode .rc-fact strong,.dark .rc-fact strong{color:#9fc08a}
+    [data-theme="dark"] .rc-facts,body.dark .rc-facts,body.dark-mode .rc-facts,.dark .rc-facts{border-color:rgba(255,255,255,.15)}
+
+    @media (max-width:900px){
+      .rc-hero{padding:48px 0}
+      .rc-hero-grid{grid-template-columns:1fr;gap:36px}
+      .rc-mosaic{height:320px}
+      .rc-facts{gap:28px}
+      .rc-section{padding:48px 0 60px}
+      .rc-cta-wrap{padding:60px 0}
+      .rc-cta{padding:30px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="nutrition.html">Nutrition</a>
+        <a href="recipes.html" class="active">Recipes</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="rc-hero">
+      <div class="container rc-hero-grid">
+        <div>
+          <h1>Healthy recipes, made simple.</h1>
+          <p class="rc-hero-text">Easy ideas for everyday meals, drinks and snacks, each with a full ingredient list and clear step-by-step instructions.</p>
+          <div class="rc-hero-btns">
+            <a href="#recipes" class="btn btn-primary">Browse recipes</a>
+            <a href="nutrition.html" class="btn btn-outline">Learn about nutrition</a>
+          </div>
+          <div class="rc-facts">
+            <div class="rc-fact"><strong>25+</strong><span>Recipes</span></div>
+            <div class="rc-fact"><strong>7</strong><span>Categories</span></div>
+            <div class="rc-fact"><strong>Easy</strong><span>Step-by-step</span></div>
+          </div>
+        </div>
+        <div class="rc-mosaic">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=80" alt="Fresh healthy meal with vegetables">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Colourful salad bowl">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Healthy grain bowl">
+        </div>
+      </div>
+    </section>
+
+    <!-- RECIPE FILTER + GRID (ids/classes unchanged for script.js) -->
+    <section class="rc-section" id="recipes">
+      <div class="container">
+        <div class="rc-toolbar">
+          <h2>Find a recipe</h2>
+          <p>Choose a meal type, then tap a recipe to see ingredients and steps.</p>
+          <div class="filter-bar" id="recipe-filter-bar">
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="Breakfast">Breakfast</button>
+            <button class="filter-btn" data-category="Lunch">Lunch</button>
+            <button class="filter-btn" data-category="Dinner">Dinner</button>
+            <button class="filter-btn" data-category="Juices & Smoothies">Juices &amp; Smoothies</button>
+            <button class="filter-btn" data-category="Snacks">Snacks</button>
+            <button class="filter-btn" data-category="Salads">Salads</button>
+            <button class="filter-btn" data-category="Desserts">Desserts</button>
+          </div>
+        </div>
+        <div class="recipe-grid" id="recipe-grid">
+          <!-- Recipe cards are inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="rc-cta-wrap section-cream">
+      <div class="container">
+        <div class="rc-cta">
+          <div>
+            <h2>Need personalized nutrition guidance?</h2>
+            <p>Connect with a qualified nutrition professional for personalized diet and lifestyle guidance.</p>
+          </div>
+          <div class="rc-cta-actions">
+            <a href="nutrition.html" class="btn btn-primary">Explore nutrition</a>
+            <a href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer" class="btn btn-clay">Visit Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+          <p>Eat Better. Live Better.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Follow our nutrition expert for daily tips and updates.</p>
+          <a class="footer-social" href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer">Instagram — @dnmahnoor_01</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 NutriWell. All rights reserved.</span>
+        <span>Built with HTML, CSS &amp; JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ RECIPE DETAIL MODAL (unchanged) ============ -->
+  <div class="modal-overlay" id="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close recipe details">✕</button>
+      <img src="" alt="" class="modal-image" id="modal-image">
+      <div class="modal-content">
+        <h3 id="modal-title">Recipe Name</h3>
+        <div class="modal-meta">
+          <span id="modal-time">— —</span>
+          <span id="modal-difficulty">— —</span>
+        </div>
+        <h4>Ingredients</h4>
+        <ul id="modal-ingredients"></ul>
+        <h4>Preparation Steps</h4>
+        <ol id="modal-steps"></ol>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

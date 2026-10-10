@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — NutriWell</title>
+  <meta name="description" content="Learn about NutriWell's mission to make nutrition easier to understand and healthy habits easier to build.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== About page only (prefixed ab-) =====
+       Colours are inherited from the site, so dark mode works automatically. */
+    .ab-hero{padding:88px 0 72px;border-bottom:1px solid rgba(128,128,128,.25)}
+    .ab-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+    .ab-hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.08;margin:0 0 20px}
+    .ab-hero p{font-size:1.15rem;line-height:1.7;max-width:52ch;opacity:.85;margin:0 0 28px}
+    .ab-hero-links{display:flex;gap:14px;flex-wrap:wrap}
+    .ab-photo{position:relative}
+    .ab-photo img{width:100%;height:440px;object-fit:cover;border-radius:200px 200px 16px 16px;display:block;position:relative;z-index:1}
+    .ab-photo::before{content:"";position:absolute;inset:24px -20px -20px 24px;border-radius:200px 200px 16px 16px;background:#3a4a2e}
+
+    .ab-section{padding:88px 0}
+    .ab-mission{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+    .ab-mission h2,.ab-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.15;margin:0}
+    .ab-mission p{font-size:1.08rem;line-height:1.8;max-width:62ch;margin:0 0 18px}
+    .ab-mission p:first-child{font-family:'Fraunces',serif;font-size:1.45rem;line-height:1.5}
+    .ab-head{max-width:620px;margin-bottom:48px}
+    .ab-head p{margin:12px 0 0;line-height:1.7;opacity:.8}
+
+    .ab-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid #6a8a55}
+    .ab-step{padding:32px 32px 8px 0;position:relative}
+    .ab-step + .ab-step{padding-left:32px;border-left:1px solid rgba(128,128,128,.3)}
+    .ab-step-num{font-family:'Fraunces',serif;font-size:3.2rem;line-height:1;color:#c8653a;display:block;margin-bottom:14px}
+    .ab-step h3{font-family:'Fraunces',serif;font-size:1.35rem;margin:0 0 8px}
+    .ab-step p{line-height:1.7;margin:0 0 6px;opacity:.85}
+    .ab-step-tag{display:inline-block;margin-top:10px;font-weight:700;font-size:.9rem;color:inherit;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#c8653a}
+
+    .ab-principles{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+    .ab-principles .ab-head{position:sticky;top:110px;margin:0}
+
+    /* expert card: always dark green, readable in light and dark mode */
+    .ab-expert{display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:center;background:#2f3d25;border-radius:24px;padding:40px}
+    .ab-expert img{width:100%;aspect-ratio:1/1.15;object-fit:cover;object-position:top center;border-radius:16px;display:block}
+    .ab-expert h2{font-family:'Fraunces',serif;font-weight:600;font-size:2rem;margin:0 0 6px;color:#f5f1e6 !important}
+    .ab-expert .role{font-weight:700;margin:0 0 14px;color:#e8b999 !important}
+    .ab-expert p{line-height:1.75;max-width:58ch;margin:0 0 22px;color:#e4dfcf !important;opacity:1 !important}
+    .ab-expert .btn{display:inline-block}
+    .ab-expert .btn-clay{background:#c8653a !important;color:#fff !important;border:2px solid #c8653a !important}
+    .ab-expert .btn-clay:hover{background:#b3562e !important;border-color:#b3562e !important}
+
+    .ab-cta{text-align:center;max-width:640px;margin:0 auto}
+    .ab-cta h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.5rem);margin:0 0 12px}
+    .ab-cta p{line-height:1.7;opacity:.85;margin:0 0 26px}
+    .ab-cta .ab-hero-links{justify-content:center}
+
+    @media (max-width:900px){
+      .ab-hero{padding:56px 0 56px}
+      .ab-hero-grid,.ab-mission,.ab-principles{grid-template-columns:1fr;gap:40px}
+      .ab-photo img{height:320px}
+      .ab-photo::before{inset:16px -10px -12px 16px}
+      .ab-section{padding:60px 0}
+      .ab-steps{grid-template-columns:1fr}
+      .ab-step,.ab-step + .ab-step{padding:28px 0 12px;border-left:0}
+      .ab-step + .ab-step{border-top:1px solid rgba(128,128,128,.3)}
+      .ab-principles .ab-head{position:static}
+      .ab-expert{grid-template-columns:1fr;padding:28px}
+      .ab-expert img{max-width:260px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="nutrition.html">Nutrition</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO (section-cream = follows the site's light/dark theme) -->
+    <section class="ab-hero section-cream">
+      <div class="container ab-hero-grid">
+        <div>
+          <h1>Making better nutrition easier to understand.</h1>
+          <p>NutriWell turns nutrition science into plain, practical guidance, so you can choose better food and build habits that last without a nutrition degree.</p>
+          <div class="ab-hero-links">
+            <a href="nutrition.html" class="btn btn-primary">Explore nutrition</a>
+            <a href="recipes.html" class="btn btn-outline">Browse recipes</a>
+          </div>
+        </div>
+        <div class="ab-photo">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80" alt="A healthy meal with fresh vegetables and grains">
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="ab-section">
+      <div class="container ab-mission">
+        <h2>Nutrition that fits real life</h2>
+        <div>
+          <p>We help people understand nutrition, make better food choices and build healthier everyday habits, one meal at a time.</p>
+          <p>Healthy eating should feel approachable, not overwhelming. That's why every page on NutriWell focuses on clarity: what a nutrient does, why it matters, and how to get more of it from real food.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="ab-section section-cream">
+      <div class="container">
+        <div class="ab-head">
+          <h2>Three steps to lasting change</h2>
+          <p>We keep things simple, because simple habits are the ones that stick.</p>
+        </div>
+        <div class="ab-steps">
+          <article class="ab-step">
+            <span class="ab-step-num">1</span>
+            <h3>Learn the basics</h3>
+            <p>What protein, carbs, fats, vitamins and minerals do for your body, in plain language.</p>
+            <a class="ab-step-tag" href="nutrition.html">See the nutrition guide</a>
+          </article>
+          <article class="ab-step">
+            <span class="ab-step-num">2</span>
+            <h3>Make it practical</h3>
+            <p>Use that understanding to choose foods that support your goals and energy levels.</p>
+            <a class="ab-step-tag" href="recipes.html">Find a recipe</a>
+          </article>
+          <article class="ab-step">
+            <span class="ab-step-num">3</span>
+            <h3>Build what lasts</h3>
+            <p>Notice how you feel, adjust gradually, and keep habits going well beyond a single week.</p>
+            <a class="ab-step-tag" href="contact.html">Ask for guidance</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES (accordion markup unchanged, so script.js keeps working) -->
+    <section class="ab-section">
+      <div class="container ab-principles">
+        <div class="ab-head">
+          <h2>Four principles behind everything we recommend</h2>
+          <p>Tap a principle to read more.</p>
+        </div>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-num">01</span>
+              <span>Eat a variety of foods</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel">
+              <p>No single food provides every nutrient your body needs. Eating a wide range of fruits, vegetables, grains and proteins helps you cover your nutritional bases naturally.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-num">02</span>
+              <span>Stay hydrated</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel">
+              <p>Water supports digestion, circulation and temperature regulation. Drink consistently through the day rather than all at once.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-num">03</span>
+              <span>Choose whole foods</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel">
+              <p>Whole, minimally processed foods generally contain more fibre, vitamins and minerals than heavily processed alternatives, and keep you fuller for longer.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-num">04</span>
+              <span>Keep portions balanced</span>
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-panel">
+              <p>Even healthy foods should be eaten in sensible amounts. Balancing your plate across food groups helps you meet your energy needs without excess.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS (data-target kept for the counter script) -->
+    <section class="section-forest">
+      <div class="container">
+        <div class="stats-grid">
+          <div>
+            <div class="stat-number" data-target="50" data-suffix="+">0</div>
+            <div class="stat-label">Healthy foods</div>
+          </div>
+          <div>
+            <div class="stat-number" data-target="25" data-suffix="+">0</div>
+            <div class="stat-label">Recipe ideas</div>
+          </div>
+          <div>
+            <div class="stat-number" data-target="10" data-suffix="+">0</div>
+            <div class="stat-label">Nutrition tips</div>
+          </div>
+          <div>
+            <div class="stat-number" data-target="5" data-suffix="">0</div>
+            <div class="stat-label">Pages to explore</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERT -->
+    <section class="ab-section">
+      <div class="container">
+        <div class="ab-expert">
+          <img src="images/expert/dn-mahnoor.png" alt="Portrait of DN Mahnoor, Dietitian and Nutritionist">
+          <div>
+            <h2>DN Mahnoor</h2>
+            <p class="role">Dietitian &amp; Nutritionist</p>
+            <p>Our featured expert helps people with PCOS, diabetes and weight management, and builds personalized diet plans around real everyday life.</p>
+            <a href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer" class="btn btn-clay">Follow on Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="ab-section section-cream">
+      <div class="container ab-cta">
+        <h2>Ready to eat a little better today?</h2>
+        <p>Start with one recipe or one question. Small steps add up.</p>
+        <div class="ab-hero-links">
+          <a href="recipes.html" class="btn btn-primary">Discover recipes</a>
+          <a href="contact.html" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+          <p>Eat Better. Live Better.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Follow our nutrition expert for daily tips and updates.</p>
+          <a class="footer-social" href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer">Instagram — @dnmahnoor_01</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 NutriWell. All rights reserved.</span>
+        <span>Built with HTML, CSS &amp; JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrition — NutriWell</title>
+  <meta name="description" content="Understand your nutrition: explore key nutrient categories, filter healthy foods, and calculate your BMI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== Nutrition page only (prefixed nu-) ===== */
+    .nu-hero{padding:80px 0 64px;background:#f5f1e6;border-bottom:1px solid rgba(0,0,0,.08)}
+    .nu-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:end}
+    .nu-hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.3rem,5vw,4rem);line-height:1.08;margin:0 0 18px;color:#252b1f}
+    .nu-hero p{font-size:1.15rem;line-height:1.7;max-width:52ch;color:#4d5244;margin:0}
+    .nu-jump{display:flex;flex-direction:column;border-top:2px solid #3a4a2e}
+    .nu-jump a{display:flex;justify-content:space-between;align-items:center;padding:16px 4px;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#252b1f;text-decoration:none;transition:padding .2s,color .2s}
+    .nu-jump a:hover{padding-left:12px;color:#a8552c}
+    .nu-jump span{font-weight:500;font-size:.9rem;opacity:.65}
+
+    .nu-section{padding:88px 0}
+    .nu-head{max-width:620px;margin-bottom:44px}
+    .nu-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.15;margin:0}
+    .nu-head p{margin:12px 0 0;line-height:1.7;opacity:.8}
+
+    /* categories */
+    .nu-cats{display:grid;grid-template-columns:repeat(2,1fr);column-gap:56px}
+    .nu-cat{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:26px 0;border-top:1px solid rgba(0,0,0,.14)}
+    .nu-cat-letter{width:56px;height:56px;border-radius:50%;background:#3a4a2e;color:#f5f1e6;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem}
+    .nu-cat:nth-child(3n+2) .nu-cat-letter{background:#a8552c}
+    .nu-cat h3{font-family:'Fraunces',serif;font-size:1.3rem;margin:2px 0 6px}
+    .nu-cat p{margin:0 0 10px;line-height:1.65;opacity:.85}
+    .nu-cat small{display:inline-block;font-weight:700;font-size:.88rem;color:#3a4a2e}
+
+    /* bmi */
+    .nu-bmi{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,.12)}
+    .nu-bmi-form{padding:40px;background:#fff}
+    .nu-bmi-result{padding:40px;background:#3a4a2e;color:#f5f1e6;display:flex;flex-direction:column;justify-content:center}
+    .nu-bmi-result .bmi-value{font-family:'Fraunces',serif;font-size:4.5rem;line-height:1}
+    .nu-bmi-result .bmi-message{line-height:1.7;margin:12px 0 0}
+    .nu-bmi-result .bmi-placeholder{font-size:1.1rem;line-height:1.7;margin:0}
+    .nu-bmi-result .bmi-disclaimer{font-size:.85rem;opacity:.7;margin:28px 0 0;line-height:1.6}
+    .nu-bmi-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .nu-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+    .nu-scale div{font-size:.78rem;line-height:1.4;border-top:4px solid;padding-top:8px}
+    .nu-scale b{display:block;font-size:.85rem}
+    .nu-scale div:nth-child(1){border-color:#6b9bd1}
+    .nu-scale div:nth-child(2){border-color:#6fa05a}
+    .nu-scale div:nth-child(3){border-color:#e0a63a}
+    .nu-scale div:nth-child(4){border-color:#c4553a}
+
+    /* expert */
+    .nu-expert{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center}
+    .nu-expert img{width:100%;aspect-ratio:1/1.2;object-fit:cover;object-position:top center;border-radius:200px 200px 16px 16px;display:block}
+    .nu-expert h3{font-family:'Fraunces',serif;font-weight:600;font-size:2.2rem;margin:0 0 6px}
+    .nu-role{font-weight:700;color:#a8552c;margin:0 0 14px}
+    .nu-expert p{line-height:1.75;max-width:58ch}
+    .nu-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 26px}
+    .nu-tags span{padding:7px 16px;border:1.5px solid #3a4a2e;border-radius:999px;font-weight:600;font-size:.9rem;color:#3a4a2e}
+
+    /* cta */
+    .nu-cta{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;background:#3a4a2e;color:#f5f1e6;border-radius:24px;padding:44px}
+    .nu-cta h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 8px}
+    .nu-cta p{margin:0;max-width:52ch;line-height:1.7;opacity:.9}
+    .nu-cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* dark mode */
+    [data-theme="dark"] .nu-hero,body.dark .nu-hero,body.dark-mode .nu-hero,.dark .nu-hero{background:#1c211a;border-color:rgba(255,255,255,.1)}
+    [data-theme="dark"] .nu-hero h1,body.dark .nu-hero h1,body.dark-mode .nu-hero h1,.dark .nu-hero h1,
+    [data-theme="dark"] .nu-jump a,body.dark .nu-jump a,body.dark-mode .nu-jump a,.dark .nu-jump a{color:#f1ede1}
+    [data-theme="dark"] .nu-hero p,body.dark .nu-hero p,body.dark-mode .nu-hero p,.dark .nu-hero p{color:#c9c6b8}
+    [data-theme="dark"] .nu-bmi-form,body.dark .nu-bmi-form,body.dark-mode .nu-bmi-form,.dark .nu-bmi-form{background:#242a21}
+    [data-theme="dark"] .nu-cat small,[data-theme="dark"] .nu-tags span,body.dark .nu-cat small,body.dark .nu-tags span,body.dark-mode .nu-cat small,body.dark-mode .nu-tags span,.dark .nu-cat small,.dark .nu-tags span{color:#9fc08a;border-color:#9fc08a}
+
+    @media (max-width:900px){
+      .nu-hero{padding:56px 0 48px}
+      .nu-hero-grid,.nu-expert{grid-template-columns:1fr;gap:36px}
+      .nu-section{padding:60px 0}
+      .nu-cats{grid-template-columns:1fr}
+      .nu-bmi{grid-template-columns:1fr}
+      .nu-bmi-form,.nu-bmi-result{padding:28px}
+      .nu-expert img{max-width:260px}
+      .nu-cta{padding:30px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="nutrition.html" class="active">Nutrition</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="nu-hero">
+      <div class="container nu-hero-grid">
+        <div>
+          <h1>Understand your nutrition.</h1>
+          <p>Learn what your body needs, find foods worth adding to your plate, and check your BMI in a few seconds.</p>
+        </div>
+        <nav class="nu-jump" aria-label="On this page">
+          <a href="#categories">Nutrition categories <span>7 essentials</span></a>
+          <a href="#food-explorer">Food explorer <span>Filter by type</span></a>
+          <a href="#bmi-calculator">BMI calculator <span>Quick check</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="nu-section" id="categories">
+      <div class="container">
+        <div class="nu-head">
+          <h2>Seven building blocks your body relies on</h2>
+          <p>What each one does, and where to find it in everyday food.</p>
+        </div>
+        <div class="nu-cats">
+          <article class="nu-cat">
+            <span class="nu-cat-letter">P</span>
+            <div><h3>Protein</h3><p>Builds and repairs muscle, skin and other tissue.</p><small>Chicken, eggs, lentils, tofu</small></div>
+          </article>
+          <article class="nu-cat">
+            <span class="nu-cat-letter">C</span>
+            <div><h3>Carbohydrates</h3><p>Your body's main and most efficient source of energy.</p><small>Rice, oats, potatoes, fruit</small></div>
+          </article>
+          <article class="nu-cat">
+            <span class="nu-cat-letter">F</span>
+            <div><h3>Healthy fats</h3><p>Supports brain function and helps absorb key vitamins.</p><small>Avocado, olive oil, nuts</small></div>
+          </article>
+          <article class="nu-cat">
+            <span class="nu-cat-letter">V</span>
+            <div><h3>Vitamins</h3><p>Supports immunity, vision and healthy skin.</p><small>Citrus, spinach, carrots</small></div>
+          </article>
+          <article class="nu-cat">
+            <span class="nu-cat-letter">M</span>
+            <div><h3>Minerals</h3><p>Keeps bones, nerves and muscles working properly.</p><small>Dairy, leafy greens, seeds</small></div>
+          </article>
+          <article class="nu-cat">
+            <span class="nu-cat-letter">Fi</span>
+            <div><h3>Fibre</h3><p>Supports digestion and keeps you full for longer.</p><small>Beans, oats, wholegrains</small></div>
+          </article>
+          <article class="nu-cat">
+            <span class="nu-cat-letter">W</span>
+            <div><h3>Water</h3><p>Essential for nearly every process in the body.</p><small>Water, herbal tea, fruit</small></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOD EXPLORER (ids/classes unchanged for script.js) -->
+    <section class="nu-section section-cream" id="food-explorer">
+      <div class="container">
+        <div class="nu-head">
+          <h2>Explore healthy foods</h2>
+          <p>Pick a category to see foods worth adding to your plate.</p>
+        </div>
+        <div class="filter-bar" id="food-filter-bar">
+          <button class="filter-btn active" data-category="All">All</button>
+          <button class="filter-btn" data-category="Fruits">Fruits</button>
+          <button class="filter-btn" data-category="Vegetables">Vegetables</button>
+          <button class="filter-btn" data-category="Protein">Protein</button>
+          <button class="filter-btn" data-category="Grains">Grains</button>
+        </div>
+        <div class="food-grid" id="food-grid">
+          <!-- Food cards are inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- BMI CALCULATOR (ids unchanged for script.js) -->
+    <section class="nu-section" id="bmi-calculator">
+      <div class="container">
+        <div class="nu-head">
+          <h2>Know your numbers</h2>
+          <p>Enter your height and weight to get a quick BMI estimate.</p>
+        </div>
+        <div class="nu-bmi">
+          <div class="nu-bmi-form">
+            <form id="bmi-form" novalidate>
+              <div class="form-group">
+                <label for="bmi-height">Height (cm)</label>
+                <input type="number" id="bmi-height" name="height" placeholder="e.g. 170" min="0">
+                <span class="field-error" id="height-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="bmi-weight">Weight (kg)</label>
+                <input type="number" id="bmi-weight" name="weight" placeholder="e.g. 65" min="0">
+                <span class="field-error" id="weight-error"></span>
+              </div>
+              <div class="nu-bmi-actions">
+                <button type="submit" class="btn btn-primary">Calculate BMI</button>
+                <button type="button" id="bmi-reset" class="btn btn-outline">Reset</button>
+              </div>
+            </form>
+            <div class="nu-scale" aria-label="BMI ranges">
+              <div><b>Under 18.5</b>Underweight</div>
+              <div><b>18.5 – 24.9</b>Healthy</div>
+              <div><b>25 – 29.9</b>Overweight</div>
+              <div><b>30+</b>Obese</div>
+            </div>
+          </div>
+          <div class="nu-bmi-result">
+            <p class="bmi-placeholder" id="bmi-placeholder">Your result will appear here once you calculate your BMI.</p>
+            <div id="bmi-result-box" style="display:none;">
+              <div class="bmi-value" id="bmi-value">0.0</div>
+              <span class="bmi-category" id="bmi-category">—</span>
+              <p class="bmi-message" id="bmi-message"></p>
+            </div>
+            <p class="bmi-disclaimer">BMI is a general screening measure and does not replace professional medical advice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERT -->
+    <section class="nu-section section-cream">
+      <div class="container nu-expert">
+        <img src="images/expert/dn-mahnoor.png" alt="Portrait of DN Mahnoor, Dietitian and Nutritionist">
+        <div>
+          <h3>DN Mahnoor</h3>
+          <p class="nu-role">Dietitian &amp; Nutritionist</p>
+          <p>DN Mahnoor works with clients on real, everyday nutrition challenges, from managing PCOS and diabetes to reaching healthy weight goals through practical, personalized diet plans.</p>
+          <div class="nu-tags">
+            <span>PCOS</span>
+            <span>Diabetes</span>
+            <span>Weight management</span>
+            <span>Personalized diet plans</span>
+          </div>
+          <a href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer" class="btn btn-clay">View Instagram</a>
+          <span class="expert-handle">&nbsp;@dnmahnoor_01</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="nu-section">
+      <div class="container">
+        <div class="nu-cta">
+          <div>
+            <h2>Need personalized nutrition guidance?</h2>
+            <p>Connect with a qualified nutrition professional for personalized diet and lifestyle guidance.</p>
+          </div>
+          <div class="nu-cta-actions">
+            <a href="recipes.html" class="btn btn-primary">Discover recipes</a>
+            <a href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer" class="btn btn-clay">Visit Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+          <p>Eat Better. Live Better.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Follow our nutrition expert for daily tips and updates.</p>
+          <a class="footer-social" href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer">Instagram — @dnmahnoor_01</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 NutriWell. All rights reserved.</span>
+        <span>Built with HTML, CSS &amp; JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
