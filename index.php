@@ -1,0 +1,371 @@
+<?php
+require_once __DIR__ . '/../includes/session.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriWell — Eat Better. Live Better.</title>
+  <meta name="description" content="NutriWell is a nutrition and healthy-lifestyle platform helping you explore healthy foods, learn nutrition basics, discover recipes and check your BMI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="index.php" class="active" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="nutrition.html">Nutrition</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="contact.html">Contact</a>
+        <a href="logout.php">Logout</a>
+
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-shape-1" aria-hidden="true"></div>
+      <div class="hero-shape-2" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-copy">
+          <span class="hero-eyebrow">Nutrition, made human</span>
+          <h1>Eat Better.<br>Live Better.</h1>
+          <p>Simple, practical nutrition guidance for a healthier, happier everyday — no extreme diets, no confusing jargon.</p>
+          <div class="hero-actions">
+            <a href="nutrition.html" class="btn btn-primary">Explore Nutrition</a>
+            <a href="recipes.html" class="btn btn-outline">Discover Recipes</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="images/expert/home_page.png " alt="Fuel Your Better Self - Healthy breakfast bowl with oatmeal, banana, nuts and chia drink">
+          <div class="hero-visual-caption">
+            <span>50+ foods explored &amp; explained</span>
+            <span>Vol. 01</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GOAL FINDER ============ -->
+    <section class="section-tight">
+      <div class="container goal-finder">
+        <div>
+          <div class="section-head" style="margin-bottom:0;">
+            <span class="section-kicker">Find your fit</span>
+            <h2>Find meals that fit your goals</h2>
+            <p>Every body is different. Start with a goal below and we'll point you to foods and recipes that match it.</p>
+          </div>
+          <div class="goal-list">
+            <a class="goal-item" href="nutrition.html#food-explorer">High Protein</a>
+            <a class="goal-item" href="nutrition.html#food-explorer">Low Carb</a>
+            <a class="goal-item" href="nutrition.html#food-explorer">Gluten Free</a>
+            <a class="goal-item" href="recipes.html">Vegan</a>
+            <a class="goal-item" href="nutrition.html#food-explorer">Dairy Free</a>
+            <a class="goal-item" href="nutrition.html#food-explorer">Low Sugar</a>
+            <a class="goal-item" href="recipes.html">Keto Friendly</a>
+            <a class="goal-item" href="nutrition.html#bmi-calculator">Check My BMI</a>
+          </div>
+        </div>
+        <div class="personalize-panel">
+          <span class="section-kicker">Not sure where to start?</span>
+          <h3>Personalize your plan</h3>
+          <p>Head to the Nutrition page to explore foods by category and get a quick BMI reading in under a minute.</p>
+          <a href="nutrition.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOUNDATIONS (Build Better Habits) ============ -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Foundations</span>
+          <h2>Build better habits</h2>
+          <p>Four simple habits that make the biggest difference to how you feel every day.</p>
+        </div>
+        <div class="habits-editorial">
+          <article class="habit-feature" style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80')">
+            <div>
+              <h3>Balanced Diet</h3>
+              <p>Combine proteins, carbohydrates and healthy fats in the right proportions for lasting energy.</p>
+            </div>
+          </article>
+          <article class="habit-plain">
+            <span class="habit-mark">01</span>
+            <h3>Healthy Foods</h3>
+            <p>Choose whole, minimally processed foods whenever you have the option.</p>
+          </article>
+          <article class="habit-plain">
+            <span class="habit-mark">02</span>
+            <h3>Smart Hydration</h3>
+            <p>Drinking enough water supports digestion, focus and energy levels.</p>
+          </article>
+          <article class="habit-plain">
+            <span class="habit-mark">03</span>
+            <h3>Active Lifestyle</h3>
+            <p>Pair good nutrition with regular movement for the best results.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY NUTRIWELL ============ -->
+    <section>
+      <div class="container split">
+        <div class="split-media">
+          <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80" alt="Fresh vegetables and herbs arranged on a wooden table">
+        </div>
+        <div class="split-text">
+          <span class="section-kicker">Why NutriWell</span>
+          <h2>Nutrition made simple</h2>
+          <p>NutriWell breaks nutrition down into plain, practical language — no confusing jargon, no extreme diets. Just clear guidance so healthy choices feel achievable every day.</p>
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <span class="benefit-dot">01</span>
+              <div>
+                <strong>Simple guidance</strong>
+                <span>Nutrition concepts explained in everyday language.</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-dot">02</span>
+              <div>
+                <strong>Practical tips</strong>
+                <span>Small, realistic changes that fit into daily life.</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-dot">03</span>
+              <div>
+                <strong>Healthy recipes</strong>
+                <span>Easy meals built around whole, nourishing ingredients.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED FOODS ============ -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Featured foods</span>
+          <h2>Good food, good choices</h2>
+          <p>A handful of everyday ingredients that give you a lot of nutrition for very little effort.</p>
+        </div>
+        <div class="food-gallery">
+          <figure class="gallery-item g-feature">
+            <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80" alt="Sliced avocado">
+            <figcaption><strong>Avocado</strong><span>Healthy fats</span></figcaption>
+          </figure>
+          <figure class="gallery-item g-wide g-row1">
+            <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=600&q=80" alt="Fresh blueberries">
+            <figcaption><strong>Berries</strong><span>Antioxidants</span></figcaption>
+          </figure>
+          <figure class="gallery-item g-cell g-row1">
+            <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&w=500&q=80" alt="Bowl of oats">
+            <figcaption><strong>Oats</strong><span>Fibre</span></figcaption>
+          </figure>
+          <figure class="gallery-item g-cell g-row2">
+            <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=500&q=80" alt="Fresh spinach leaves">
+            <figcaption><strong>Spinach</strong><span>Iron &amp; folate</span></figcaption>
+          </figure>
+          <figure class="gallery-item g-cell g-row2">
+            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" alt="Grilled salmon fillet">
+            <figcaption><strong>Salmon</strong><span>Omega-3</span></figcaption>
+          </figure>
+          <figure class="gallery-item g-cell g-row2">
+            <img src="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=600&q=80" alt="Bowl of almonds">
+            <figcaption><strong>Almonds</strong><span>Vitamin E</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST STRIP ============ -->
+    <section style="padding: 0;">
+      <div class="container" style="padding-left:0;padding-right:0;">
+        <div class="trust-strip">
+          <span>Evidence-based guidance</span>
+          <span>Real food, first</span>
+          <span>Created with a dietitian</span>
+          <span>Loved by our readers</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Real results</span>
+          <h2>Real results, real people</h2>
+        </div>
+        <div class="testimonial-editorial">
+          <div class="testimonial-feature">
+            <p class="quote">"The food explorer helped me understand what I was actually eating. Small changes, big difference."</p>
+            <div class="testimonial-person">
+              <strong>Hira K.</strong>
+              <span>University Student</span>
+            </div>
+          </div>
+          <div class="testimonial-side">
+            <div>
+              <p class="quote">"I use the BMI check every month just to keep myself accountable. Quick and easy to understand."</p>
+              <div class="testimonial-person">
+                <strong>Ahmed R.</strong>
+                <span>Working Professional</span>
+              </div>
+            </div>
+            <div>
+              <p class="quote">"The recipes are genuinely easy to follow, and they don't take an hour to cook after a long day."</p>
+              <div class="testimonial-person">
+                <strong>Sana M.</strong>
+                <span>New Parent</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONNECT WITH THE EXPERT ============ -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Personal guidance</span>
+          <h2>Ways to connect with DN Mahnoor</h2>
+          <p>Our featured Dietitian &amp; Nutritionist is one message away.</p>
+        </div>
+        <div class="connect-editorial">
+          <a class="connect-card connect-primary" href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer">
+            <img src="images/expert/dn-mahnoor.png" alt="DN Mahnoor, Dietitian and Nutritionist" style="object-position: top center;">
+            <div class="connect-card-label">
+              <strong>Personalized Plan</strong>
+              <span>Message on Instagram</span>
+            </div>
+          </a>
+          <a class="connect-card" href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="A healthy grilled chicken bowl">
+            <div class="connect-card-label">
+              <strong>Daily Tips</strong>
+              <span>Follow @dnmahnoor_01</span>
+            </div>
+          </a>
+          <a class="connect-card" href="contact.html">
+            <img src="https://images.unsplash.com/photo-1512852939750-1305098529bf?auto=format&fit=crop&w=600&q=80" alt="A fresh Mediterranean salad">
+            <div class="connect-card-label">
+              <strong>Ask a Question</strong>
+              <span>Send an inquiry</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DAILY NUTRITION TIP ============ -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="tip-block">
+          <span class="section-kicker">Your Daily Nutrition Note</span>
+          <span class="tip-mark" aria-hidden="true">"</span>
+          <p id="tip-text">Loading today's tip...</p>
+          <button id="tip-button" class="btn btn-outline">Show Another Tip</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section>
+      <div class="container">
+        <div class="promo-panel">
+          <div class="promo-text">
+            <span class="section-kicker">Stay in the loop</span>
+            <h2>Get nutrition tips in your inbox</h2>
+            <p>One short, useful email a week — new recipes, food facts and reminders to drink your water.</p>
+            <form id="newsletter-form" novalidate>
+              <div class="inline-form">
+                <input type="email" id="newsletter-email" placeholder="Enter your email address" aria-label="Email address">
+                <button type="submit">Subscribe</button>
+              </div>
+              <span class="newsletter-note" id="newsletter-note"></span>
+            </form>
+          </div>
+          <div class="promo-media">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=80" alt="A fresh bowl of fruit and grains">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONSULTATION CTA ============ -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <h2>Need personalized nutrition guidance?</h2>
+            <p>Connect with a qualified nutrition professional for personalized diet and lifestyle guidance.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="nutrition.html" class="btn btn-primary">Explore Nutrition</a>
+            <a href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer" class="btn btn-clay">Visit Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-mark">N</span>NutriWell</a>
+          <p>Eat Better. Live Better.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Follow our nutrition expert for daily tips and updates.</p>
+          <a class="footer-social" href="https://www.instagram.com/dnmahnoor_01/" target="_blank" rel="noopener noreferrer">Instagram — @dnmahnoor_01</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 NutriWell. All rights reserved.</span>
+        <span>Built with HTML, CSS &amp; JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
