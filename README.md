@@ -253,13 +253,7 @@ Instagram: [@dnmahnoor_01](https://www.instagram.com/dnmahnoor_01/)
 - [ ] CSRF tokens on all forms
 - [ ] Recipes and foods loaded from the database
 
----
 
-## Contact
-
-For questions or feedback, use the contact form on the website or reach out by email at **ranaaliranaali09797@gmail.com**.
-
----
 
 <div align="center">
 
